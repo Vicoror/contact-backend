@@ -18,6 +18,10 @@ router.post("/", async (req, res) => {
   }
 
   try {
+    console.log("ENV CHECK:", {
+      user: !!process.env.GMAIL_USER,
+      pass: !!process.env.GMAIL_PASS,
+    });
     await transporter.sendMail({
       from: `"Portafolio" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
